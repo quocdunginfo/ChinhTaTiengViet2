@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="libs/jsoup-1.7.3.jar" sourcepath="libs/jsoup-1.7.3-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/ChinhTaTiengViet2/libs/jsoup-1.7.3-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="libs/ormlite-core-4.48.jar" sourcepath="libs/ormlite-core-4.48-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/ChinhTaTiengViet2/libs/ormlite-core-4.48-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="libs/ormlite-jdbc-4.48.jar" sourcepath="libs/ormlite-jdbc-4.48-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/ChinhTaTiengViet2/libs/ormlite-jdbc-4.48-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="libs/sqlite-jdbc-3.7.2.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

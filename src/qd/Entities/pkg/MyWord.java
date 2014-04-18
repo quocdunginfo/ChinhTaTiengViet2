@@ -7,7 +7,7 @@ import com.j256.ormlite.table.DatabaseTable;
 public class MyWord {
 	@DatabaseField(generatedId=true)
 	private Long id = null; 
-	@DatabaseField
+	@DatabaseField(unique=true)
 	private String value = null;
 	public MyWord() {
 		// TODO Auto-generated constructor stub

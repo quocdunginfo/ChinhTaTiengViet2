@@ -14,7 +14,8 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
-import qd.DB.pkg.MySQLHelper;
+import qd.DB.pkg.MySQLiteHelper;
+import qd.Dict.pkg.MyDict;
 import qd.Entities.pkg.MyLinker;
 import qd.Entities.pkg.MyWord;
 
@@ -37,13 +38,30 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		/*
+		String jk = "Về vấn đề này, Phó chủ tịch UBND TP HCM Hứa Ngọc Thuận cho rằng, thành phố có đề án quy hoạch lại các ngành nghề kinh doanh nhạy cảm trên địa bàn. Đề án này đã được đưa ra lấy ý kiến lãnh đạo, phòng văn hóa của 24 quận, huyện và được thông qua một lần tại hội nghị do ủy ban thành phố tổ chức. Sở Văn hóa đang hoàn thiện và tiếp tục lấy ý kiến các quận, huyện để sớm trình thường trực UBND TP và khoảng cuối tháng 4 sẽ thông qua.Tư tưởng chung của đề án là không tăng điểm kinh doanh các ngành nghề nhạy cảm nhưng phân cấp quyền cấp phép cho chủ tịch các quận, huyện và địa phương phải có trách nhiệm quản lý các cơ sở do mình cấp phép. Sở Văn hóa - Thể thao và Du lịch không phải là đơn vị cấp phép nữa, Phó chủ tịch phụ trách lĩnh vực văn hóa - xã hội của TP HCM cho biết. Tại hội nghị, lãnh đạo Công an TP HCM cũng cho biết, trong 3 tháng cao điểm, trên địa bàn thành phố xảy ra 1.155 vụ phạm pháp hình sự, giảm 13,8% so với thời gian liền kề và 6,1% so với cùng kỳ, làm chết 21 người, bị thương 157 người, tài sản thiệt hại trị giá trên 50 tỷ đồng. Công an đã điều tra khám phá 777 vụ phạm pháp hình sự, bắt 975 tên (đạt hơn 67%). Tình hình vận chuyển ma túy, vận chuyển vũ khí tự chế qua đường hàng không đang có chiều hướng diễn biến phức tạp";
+		jk = jk.replace(",", " ");
+		jk = jk.replace(".", " ");
+		jk = jk.replace("!", " ");
+		jk = jk.replace(":", " ");
+		jk = jk.replace(";", " ");
+		jk = jk.replace("&", " ");
+		String[] m = jk.split(" ");
+		for(String w:m)
+		{
+			if(MyDict.isWord(w))
+			{
+				System.out.println(w);
+			}
+		}
+		MyDict.isWord("điên");
+		
 		System.out.print("what the fuck");
 		String tmp;
 		try {
 			Document doc = Jsoup.connect(mDomain).get();
 			//get page text
 			tmp = doc.text();
+			tmp = MyDict.formatDoc(tmp);
 			//inssert to Database
 			
 			for(Element item:doc.select("a[href]"))
@@ -55,35 +73,23 @@ public class Main {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		*/
+		
 		//MySQLHelper helper = new MySQLHelper();
 		//Connection con = helper.getConnection();
 		
 		// create our data source
+		
+		/*
+		MySQLiteHelper helper=new MySQLiteHelper();
+		
+		Dao<MyWord, Long> accountDao = helper.getMyWordDAO();
 		try {
-			JdbcConnectionSource connectionSource = new JdbcConnectionSource("jdbc:sqlite:mem:account");
-			// if you need to create the table
-			TableUtils.createTable(connectionSource, MyWord.class);
-			TableUtils.createTable(connectionSource, MyLinker.class);
-			
-			Dao<MyWord, Long> accountDao = DaoManager.createDao(connectionSource, MyWord.class);
 			accountDao.create(new MyWord("quocdunginfo"));
-			accountDao.create(new MyWord("binhnguyen"));
-			accountDao.create(new MyWord("ducminh"));
-			
-			Dao<MyLinker, Long> accountDao2 = DaoManager.createDao(connectionSource, MyLinker.class);
-			MyWord tmp1 = accountDao.queryForId(1l);
-			MyWord tmp2 = accountDao.queryForId(2l);
-			
-			accountDao2.create(new MyLinker(tmp1, tmp2));
-			accountDao2.create(new MyLinker(tmp2, tmp1));
-			//accountDao2.create(new MyLinker(tmp2, tmp1));
-			
-			connectionSource.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		*/
 	}
 
 }

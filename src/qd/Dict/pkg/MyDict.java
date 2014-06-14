@@ -3,7 +3,7 @@ package qd.Dict.pkg;
 import com.sun.org.apache.bcel.internal.generic.AllocationInstruction;
 
 public class MyDict {
-	public static String allow = "àáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđqertyuiopasdghklxcvbnm";
+	public static String allow = "àáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđqertyuiopasdghklxcvbnmfjwz";
 	public void updateDict(String document)
 	{
 		
@@ -34,6 +34,24 @@ public class MyDict {
 			}
 		}
 		return true;
-		
+	}
+	/**
+	 * Loc bo moi ky tu dac biet ra khoi 1 tu tieng viet
+	 * @param word
+	 * @return
+	 */
+	public static String filterRightWord(String word)
+	{
+		String tmp = word.toLowerCase();
+		String re="";
+		for(Character k:tmp.toCharArray())
+		{
+			if(allow.contains(k.toString()))
+			{
+				re+=k;
+			}
+		}
+		return re;
+	
 	}
 }
